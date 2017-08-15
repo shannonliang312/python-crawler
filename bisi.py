@@ -47,11 +47,11 @@ headers_content = {
 # result = requests.get('http://www.hk-bc.xyz')
 s = requests.session()
 # s = requests
-cookies = s.post(url=loginUrl, data=loginForm, headers=headers, proxies=proxy).cookies
+cookies = s.post(url=loginUrl, data=loginForm, headers=headers).cookies
 
 # print(cookies)
 
-result = s.get(url='http://hk-bc.xyz/forum-2-1.html', headers=headers_content, proxies=proxy)
+result = s.get(url='http://hk-bc.xyz/forum-2-1.html', headers=headers_content)
 content = result.content
 
 res = BeautifulSoup(content, 'lxml')
