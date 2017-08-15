@@ -30,7 +30,7 @@ headers = {
 s = requests.session()
 # result = s.post(url=loginUrl, data=loginForm, headers=headers, proxies=proxy)
 # content = result.content
-result = s.get('http://ttmeiju.com/', headers=headers, proxies=proxy)
+result = s.get('http://ttmeiju.com/', headers=headers)
 content = result.content
 
 s = BeautifulSoup(content, 'lxml')

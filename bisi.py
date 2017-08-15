@@ -1,5 +1,6 @@
 from bs4 import BeautifulSoup
 import requests
+import re
 
 proxy = {
     "http": "socks5://127.0.0.1:1080"
@@ -47,18 +48,30 @@ headers_content = {
 # result = requests.get('http://www.hk-bc.xyz')
 s = requests.session()
 # s = requests
-cookies = s.post(url=loginUrl, data=loginForm, headers=headers).cookies
-
+s.post(url=loginUrl, data=loginForm, headers=headers)
 # print(cookies)
 
-result = s.get(url='http://hk-bc.xyz/forum-2-1.html', headers=headers_content)
-content = result.content
+# result = s.get(url='http://hk-bc.xyz/forum-2-1.html', headers=headers_content)
+# content = result.content
 
-res = BeautifulSoup(content, 'lxml')
 
-for item in res.find_all("a", class_="xst"):
-    print(item['href'] + " : " + item.text)
+# res = BeautifulSoup(content, 'lxml')
 
-# print(res.prettify())
+# BT
+for i in range(1, 500):
+    url = 'http://hk-bc.xyz/forum-2-' + str(i) + '.html'
+    result = s.get(url=url, headers=headers_content)
+    content = result.content
+    res = BeautifulSoup(content, 'lxml')
+
+    for item in res.find_all("a", class_="xst", text=re.compile("恋足")):
+        sub_url = 'http://hk-bc.xyz/' + item['href']
+        print(sub_url + " : " + item.text)
+
+# cookies = s.get(url='http://hk-bc.xyz/forum-2-1.html', headers=headers_content).cookies
+# result = s.get(url='http://hk-bc.xyz/forum-454-1.html', headers=headers_content)
+# res = BeautifulSoup(result.content, 'lxml')
+
+# print(cookies.get_dict())
 
 
