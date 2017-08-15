@@ -56,8 +56,8 @@ content = result.content
 
 res = BeautifulSoup(content, 'lxml')
 
-for item in res.find_all("a", "xst"):
-    print(item)
+for item in res.find_all("a", class_="xst"):
+    print(item['href'] + " : " + item.text)
 
 # print(res.prettify())
 
