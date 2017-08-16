@@ -64,7 +64,7 @@ for i in range(1, 500):
     content = result.content
     res = BeautifulSoup(content, 'lxml')
 
-    for item in res.find_all("a", class_="xst", text=re.compile("舔脚")):
+    for item in res.find_all("a", class_="xst", text=re.compile('恋足')):
         sub_url = 'http://hk-bc.xyz/' + item['href']
         print(sub_url + " : " + item.text)
 
