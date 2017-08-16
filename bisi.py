@@ -60,8 +60,8 @@ s.post(url=loginUrl, data=loginForm, headers=headers)
 fp = open('result.txt', 'w+')
 
 # BT
-for i in range(1, 1000):
-    url = 'http://hk-bc.xyz/forum-2-' + str(i) + '.html'
+for i in range(2, 1000):
+    url = 'http://hk-bc.xyz/forum.php?mod=forumdisplay&fid=2&orderby=dateline&filter=author&orderby=dateline&page=' + str(i)
     result = s.get(url=url, headers=headers_content)
     content = result.content
     res = BeautifulSoup(content, 'lxml')
