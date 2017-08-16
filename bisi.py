@@ -71,6 +71,7 @@ for i in range(1, 1000):
         fp.write(sub_url + " : " + item.text + '\n')
         print(sub_url + " : " + item.text)
 
+fp.close()
 # cookies = s.get(url='http://hk-bc.xyz/forum-2-1.html', headers=headers_content).cookies
 # result = s.get(url='http://hk-bc.xyz/forum-454-1.html', headers=headers_content)
 # res = BeautifulSoup(result.content, 'lxml')
