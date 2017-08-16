@@ -57,6 +57,8 @@ s.post(url=loginUrl, data=loginForm, headers=headers)
 
 # res = BeautifulSoup(content, 'lxml')
 
+fp = open('result.txt', 'w+')
+
 # BT
 for i in range(1, 1000):
     url = 'http://hk-bc.xyz/forum-2-' + str(i) + '.html'
@@ -66,7 +68,8 @@ for i in range(1, 1000):
 
     for item in res.find_all("a", class_="xst", text=re.compile('恋足')):
         sub_url = 'http://hk-bc.xyz/' + item['href']
-        print(sub_url + " : " + item.text)
+        fp.write(sub_url + " : " + item.text + '\n')
+        # print(sub_url + " : " + item.text)
 
 # cookies = s.get(url='http://hk-bc.xyz/forum-2-1.html', headers=headers_content).cookies
 # result = s.get(url='http://hk-bc.xyz/forum-454-1.html', headers=headers_content)
