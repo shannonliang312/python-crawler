@@ -69,7 +69,7 @@ for i in range(1, 1000):
     for item in res.find_all("a", class_="xst", text=re.compile('恋足')):
         sub_url = 'http://hk-bc.xyz/' + item['href']
         fp.write(sub_url + " : " + item.text + '\n')
-        # print(sub_url + " : " + item.text)
+        print(sub_url + " : " + item.text)
 
 # cookies = s.get(url='http://hk-bc.xyz/forum-2-1.html', headers=headers_content).cookies
 # result = s.get(url='http://hk-bc.xyz/forum-454-1.html', headers=headers_content)
