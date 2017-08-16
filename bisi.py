@@ -58,7 +58,7 @@ s.post(url=loginUrl, data=loginForm, headers=headers)
 # res = BeautifulSoup(content, 'lxml')
 
 # BT
-for i in range(1, 500):
+for i in range(1, 1000):
     url = 'http://hk-bc.xyz/forum-2-' + str(i) + '.html'
     result = s.get(url=url, headers=headers_content)
     content = result.content
