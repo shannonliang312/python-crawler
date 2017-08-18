@@ -8,7 +8,7 @@ proxy = {
     "http": "http://127.0.0.1:1080"
 }
 
-result = s.get(url=url, proxies=proxy)
+result = s.get(url=url)
 content = result.content
 res = BeautifulSoup(content, 'lxml')
 
