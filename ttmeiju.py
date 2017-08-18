@@ -2,7 +2,7 @@ from bs4 import BeautifulSoup
 import requests
 
 proxy = {
-    "http": "socks5://127.0.0.1:1080"
+    "http": "http://127.0.0.1:1080"
 }
 
 loginUrl = 'http://ttmeiju.com/index.php/user/login.html'
@@ -30,7 +30,7 @@ headers = {
 s = requests.session()
 # result = s.post(url=loginUrl, data=loginForm, headers=headers, proxies=proxy)
 # content = result.content
-result = s.get('http://ttmeiju.com/', headers=headers)
+result = s.get('http://ttmeiju.com/', headers=headers, proxies=proxy)
 content = result.content
 
 s = BeautifulSoup(content, 'lxml')

@@ -3,7 +3,7 @@ import requests
 import re
 
 proxy = {
-    "http": "socks5://127.0.0.1:1080"
+    "http": "http://127.0.0.1:1080"
 }
 
 loginUrl = 'http://hk-bc.xyz/member.php?mod=logging&action=login&loginsubmit=yes&infloat=yes&lssubmit=yes&inajax=1'
@@ -47,20 +47,13 @@ headers_content = {
 
 # result = requests.get('http://www.hk-bc.xyz')
 s = requests.session()
-# s = requests
-s.post(url=loginUrl, data=loginForm, headers=headers)
-# print(cookies)
-
-# result = s.get(url='http://hk-bc.xyz/forum-2-1.html', headers=headers_content)
-# content = result.content
+res_headers = s.post(url=loginUrl, data=loginForm, headers=headers, proxies=proxy).headers
 
 
-# res = BeautifulSoup(content, 'lxml')
-
-fp = open('result.txt', 'w+')
+# fp = open('result.txt', 'w+')
 
 # BT
-for i in range(1001, 1000):
+for i in range(1, 10):
     url = 'http://hk-bc.xyz/forum-2-' + str(i) + '.html'
     result = s.get(url=url, headers=headers_content)
     content = result.content
@@ -68,14 +61,10 @@ for i in range(1001, 1000):
 
     for item in res.find_all("a", class_="xst"):
         sub_url = 'http://hk-bc.xyz/' + item['href']
-        fp.write(sub_url + " : " + item.text + '\n')
+        # fp.write(sub_url + " : " + item.text + '\n')
         print(sub_url + " : " + item.text)
 
-fp.close()
-# cookies = s.get(url='http://hk-bc.xyz/forum-2-1.html', headers=headers_content).cookies
-# result = s.get(url='http://hk-bc.xyz/forum-454-1.html', headers=headers_content)
-# res = BeautifulSoup(result.content, 'lxml')
+# fp.close()
 
-# print(cookies.get_dict())
 
 
